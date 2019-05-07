@@ -86,6 +86,100 @@ class SceneAlpha extends Phaser.Scene {
   })
   rightFoot.setExistingBody(rightFootBody);
   this.matter.add.mouseSpring();
+
+// |---------------------------Break---------------------------------------|
+//Head to torso
+var HeadAndTorso = {
+  bodyA: theTorso.body,
+  bodyB: head.body,
+  pointA: {
+    x:  0,
+    y:  207
+  },
+  pointB: {
+    x:  0,
+    y:  -81,
+  },
+  length: 2,
+  stiffness: 1
+}
+
+//  console.log(this)
+var HeadAndTorsoConstraint = Constraint.create(HeadAndTorso);
+//  World.add(world, theConstraint);
+this.matter.world.add(HeadAndTorsoConstraint);
+
+//Torso to right hands
+var TorsoAndRightHand = {
+  bodyA: theTorso.body,
+  bodyB: rightHand.body,
+  pointA: {
+    x: 121,
+    y:  0
+  },
+  length: 116,
+  stiffness: 0.2
+
+}
+var torsoAndRightHandConstraint = Constraint.create(TorsoAndRightHand);
+this.matter.world.add(torsoAndRightHandConstraint);
+
+  //Torso to left Hand
+
+var TorsoAndLeftHand = {
+  bodyA: theTorso.body,
+  bodyB: leftHand.body,
+  pointA: {
+    x: -121,
+    y: 0
+  },
+  length: 151,
+  stiffness: 0.2
+
+}
+var torsoAndLeftHandConstraint = Constraint.create(TorsoAndLeftHand);
+this.matter.world.add(torsoAndLeftHandConstraint);
+
+  //Torso to  RightFoot
+
+  var TorsoAndRightFoot = {
+    bodyA: theTorso.body,
+    bodyB: rightFoot.body,
+    pointA: {
+      x: 120,
+      y: -550
+    },
+    pointB:{
+      x:  0,
+      y:  -74
+    },
+    length: 10,
+    stiffness: 0.2
+  }
+  var torsoAndRightFootConstraint = Constraint.create(TorsoAndRightFoot);
+  this.matter.world.add(torsoAndRightFootConstraint);
+
+  //Torso to leftFoot
+
+  var TorsoAndLeftFoot = {
+    bodyA: theTorso.body,
+    bodyB: leftFoot.body,
+    pointA: {
+      x: -120,
+      y: -550
+    },
+    pointB: {
+      x: 0,
+      y: -74
+    },
+    length: 10,
+    stiffness: 0.2
+  }
+  var torsoAndLeftFootConstraint = Constraint.create(TorsoAndLeftFoot);
+  this.matter.world.add(torsoAndLeftFootConstraint);
+
+
+
 }
 
 
