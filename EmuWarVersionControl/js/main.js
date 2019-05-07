@@ -23,6 +23,13 @@ class SceneAlpha extends Phaser.Scene {
 	var bodies_factory = Phaser.Physics.Matter.Matter.Bodies;
   var singular_factory =Phaser.Physics.Matter.Matter.Body;
   var Constraint = Phaser.Physics.Matter.Matter.Constraint;
+
+  /*  |---------------------------Break---------------------------------------|*/
+  let Eface;
+  for (let i = 0; i < 20; i++){
+    const x = Phaser.Math.Between(0, config.width);
+    const y = Phaser.Math.Between(0, config.height);
+    Eface = this.matter.add.sprite(0, 0, "emuFace");
 }
 
 var config = {
