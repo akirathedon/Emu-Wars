@@ -54,7 +54,38 @@ class SceneAlpha extends Phaser.Scene {
 
   head.setExistingBody(theHead);
   this.matter.add.mouseSpring()
+  //tells it to have the native shape of a circle
 
+  /* https://github.com/nua-bsc/Composite-Bodies/blob/master/main.js
+  */
+                      // x,  y,  radius
+  var rightHand =  this.matter.add.sprite(100,100, 'hands');
+  const rightHandBody = bodies_factory.rectangle(
+  736, 920,  rightHand.width, rightHand.height, { chamfer: {radius: 50}}
+  )
+  rightHand.setExistingBody(rightHandBody);
+  this.matter.add.mouseSpring()
+
+
+  var leftHand = this.matter.add.sprite(150,150, 'hands', {chamfer: 100});
+  const leftHandBody = bodies_factory.rectangle(264,920, leftHand.width, leftHand.height, {chamfer: {radius: 50}}
+  )
+  leftHand.setExistingBody(leftHandBody);
+  this.matter.add.mouseSpring();
+
+
+  var leftFoot = this.matter.add.sprite(160,160, 'feet', {chamfer: {radius: 50}});
+  const leftFootBody = bodies_factory.rectangle(430,1137,leftFoot.width, leftFoot.height, {chamfer: {radius:50}
+  })
+  leftFoot.setExistingBody(leftFootBody);
+  this.matter.add.mouseSpring();
+
+
+  var rightFoot = this.matter.add.sprite(110,110, 'feet', {chamfer: {radius: 50}})
+  const rightFootBody = bodies_factory.rectangle(570,1137, rightFoot.width, rightFoot.height, {chamfer: {radius:50}
+  })
+  rightFoot.setExistingBody(rightFootBody);
+  this.matter.add.mouseSpring();
 }
 
 
